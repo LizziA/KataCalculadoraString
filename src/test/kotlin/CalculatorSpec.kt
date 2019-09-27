@@ -3,7 +3,46 @@ import io.kotlintest.specs.WordSpec
 
 class CalculatorSpec : WordSpec(){
     init {
-
+        "Si la entrada esta vacia" should  {
+             "deberia retornar 0" {
+                 var sistemaBajoPrueba = Calculadora()
+                 var resultado = sistemaBajoPrueba.suma()
+                 // prueba
+                 resultado.shouldBe (0)
+             }
+         }
+        "Si la entrada es un numero" should {
+             "deberia regresar ese numero" {
+                 var sistemaBajoPrueba = Calculadora()
+                 var resultado = sistemaBajoPrueba.suma("2")
+                 // prueba
+                 resultado.shouldBe (2)
+             }
+         }
+        "Si la entrada son 2 numeros" should  {
+             "deberia regresar las suma de los 2 numeros" {
+                 var sistemaBajoPrueba = Calculadora()
+                 var resultado = sistemaBajoPrueba.suma("1,2")
+                 // prueba
+                 resultado.shouldBe (3)
+             }
+         }
+        "Si la entrada es un numero desconocido" should  {
+             "deberia regresar la suma" {
+                 var sistemaBajoPrueba = Calculadora()
+                 var resultado = sistemaBajoPrueba.suma("1,2,3,4")
+                 // prueba
+                 resultado.shouldBe (10)
+             }
+         }
+        "Si la entrada son multiples numeros delimitados por nuevas lineas" should  {
+             "deberia regresar la suma" {
+                 var sistemaBajoPrueba = Calculadora()
+                 var resultado = sistemaBajoPrueba.suma("1\n 2,3")
+                 // prueba
+                 resultado.shouldBe (6)
+             }
+         }
     }
 }
 
